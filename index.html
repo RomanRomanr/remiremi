@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Магія сторінки</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: background 0.5s;
+  }
+
+  button {
+    padding: 15px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .heart {
+  position: absolute;
+  top: -50px; /* старт зверху */
+  font-size: 24px;
+  color: red;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+</style>
+</head>
+<body>
+
+<button id="magicBtn">Натисни мене</button>
+<audio id="music" src="./videoplayback_fif1pLLj.mp3"></audio> <!-- заміни song.mp3 на свій файл -->
+
+<script>
+const btn = document.getElementById('magicBtn');
+const audio = document.getElementById('music');
+
+btn.addEventListener('click', () => {
+  // Змінити фон
+  document.body.style.backgroundImage = "url(./remi.jpeg)"; // заміни на своє фото
+//   document.body.style.backgroundSize = 'cover';
+  document.body.style.backgroundPosition = 'center';
+
+  // Запуск музики
+  audio.play();
+
+  // Створення падаючих сердечок
+  // Створення падаючих сердечок
+setInterval(() => {
+  for (let i = 0; i < 3; i++) { // створюємо відразу 3 сердечка за раз
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.textContent = '❤️';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.fontSize = 20 + Math.random() * 30 + 'px';
+    document.body.appendChild(heart);
+
+    // Видалити після анімації
+    setTimeout(() => {
+      heart.remove();
+    }, 5000); // відповідно до часу падіння
+  }
+}, 300); // кожні 0.3 секунди додаються нові
+ // кожні 0.3 секунди падає нове сердечко
+ // Оновлення сторінки через 30 секунд
+setTimeout(() => {
+  location.reload();
+}, 30000); // 30000 мс = 30 секунд
+
+});
+</script>
+
+</body>
+</html>
