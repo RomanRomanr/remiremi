@@ -63,7 +63,7 @@ setInterval(() => {
   for (let i = 0; i < 3; i++) { // створюємо відразу 3 сердечка за раз
     const heart = document.createElement('div');
     heart.className = 'heart';
-    heart.innerHTML = '<img src="./pinis.svg" style="width:100px; height:100px; fill=none">';
+    heart.innerHTML = '<img src="pinis.svg" style="width:100px; height:100px;">';
     heart.style.left = Math.random() * window.innerWidth + 'px';
     heart.style.fontSize = 20 + Math.random() * 30 + 'px';
     document.body.appendChild(heart);
